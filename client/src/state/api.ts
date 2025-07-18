@@ -27,15 +27,15 @@ export interface User {
   userId?: number;
   username: string;
   email: string;
-  profilePictureURL?: string;
+  profilePictureUrl?: string;
   cognitoId?: string;
   teamId?: number;
 }
 
 export interface Attachment {
   id: number;
-  FileURL: string;
-  FileName: string;
+  fileURL: string;
+  fileName: string;
   uploadedById: number;
 }
 
@@ -109,4 +109,5 @@ export const {
   useCreateProjectMutation,
   useGetTasksQuery,
   useCreateTaskMutation,
+  useUpdateTaskStatusMutation
 } = api;

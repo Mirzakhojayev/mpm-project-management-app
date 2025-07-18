@@ -2,14 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
-html, body, #root, .app {
+html,
+body,
+#root,
+.app {
   height: 100%;
   width: 100%;
   @apply text-sm;
-  @apply bg-white
+  @apply bg-white;
   @apply dark:bg-black;
 }
