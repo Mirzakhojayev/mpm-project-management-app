@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
-import { Clock, Filter, Grid3x3, List, Share2, Table } from "lucide-react";
+import { Clock, Filter, Grid3x3, List, PlusSquare, Share2, Table } from "lucide-react";
 import React, { useState } from "react";
+import ModalNewProject from "./ModalNewProject";
 
 type Props = {
   activeTab: string;
@@ -8,14 +9,27 @@ type Props = {
 };
 
 const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
-  const [isModalProjectOpen, setIsModalProjectOpen] = useState(false);
+  const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false);
 
   return (
     <div className="px-4 xl:px-6">
-      {/* MODAL NEW PROJECT */}
+      <ModalNewProject
+        isOpen={isModalNewProjectOpen}
+        onClose={() => setIsModalNewProjectOpen(false)}
+      />
 
       <div className="pb-6 pt-6 lg:pb-4 lg:pt-8">
-        <Header name="Product Design Development" />
+        <Header
+          name="Product Design Development"
+          buttonComponent={
+            <button
+              className="flex items-center rounded-md bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
+              onClick={() => setIsModalNewProjectOpen(true)}
+            >
+              <PlusSquare className="mr-2 h-5 w-5"/> New Boards
+            </button>
+          }
+        />
       </div>
 
       {/* TABS */}
@@ -57,7 +71,7 @@ const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
             <input
               type="search"
               placeholder="Search Task"
-              className="rounded-md border px-1 pl-10 pr-4 h-8 focus:outline-none dark:border-dark-secondary dark:bg-dark-secondary dark:text-white"
+              className="h-8 rounded-md border px-1 pl-10 pr-4 focus:outline-none dark:border-dark-secondary dark:bg-dark-secondary dark:text-white"
             />
             <Grid3x3 className="absolute left-3 top-2 h-4 w-4 text-gray-400 dark:text-neutral-500" />
           </div>
