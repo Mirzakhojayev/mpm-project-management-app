@@ -3,7 +3,13 @@ import { useGetUsersQuery } from "@/state/api";
 import React from "react";
 import { useAppSelector } from "../redux";
 import Header from "@/components/Header";
-import { DataGrid, GridColDef, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarFilterButton,
+} from "@mui/x-data-grid";
 import Image from "next/image";
 import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
 
@@ -12,28 +18,35 @@ const CustomToolbar = () => (
     <GridToolbarFilterButton />
     <GridToolbarExport />
   </GridToolbarContainer>
-)
+);
 
 const columns: GridColDef[] = [
   { field: "userId", headerName: "ID", width: 100 },
-  { field: "username", headerName: "Username", width: 150 },
+  { field: "username", headerName: "Username", width: 200 },
   {
     field: "profilePictureUrl",
     headerName: "Profile Picture",
     width: 100,
-    renderCell: (params) => (
-      <div className="flex h-full w-full items-center justify-center">
-        <div className="h-9 w-9">
-          <Image
-            src={params.value}
-            alt={params.row.username}
-            width={100}
-            height={50}
-            className="h-full rounded-full object-cover"
-          />
+    renderCell: (params) => {
+      const src = params.value?.startsWith("http")
+        ? params.value
+        : params.value
+          ? `/${params.value.replace(/^\/+/, "")}`
+          : "/default-avatar.png";
+      return (
+        <div className="flex h-full w-full items-center justify-center">
+          <div className="h-9 w-9">
+            <Image
+              src={src}
+              alt={params.row.username}
+              width={100}
+              height={50}
+              className="h-full rounded-full object-cover"
+            />
+          </div>
         </div>
-      </div>
-    ),
+      );
+    },
   },
 ];
 

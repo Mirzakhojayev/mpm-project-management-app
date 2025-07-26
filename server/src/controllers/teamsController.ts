@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
-import {PrismaClient} from "@prisma/client";
+import {PrismaClient} from "../../generated/prisma";
 
-const prisma = PrismaClient();
+const prisma = new PrismaClient();
 
 export const getTeams = async (req: Request, res: Response) => {
   try {
