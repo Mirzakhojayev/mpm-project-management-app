@@ -1,4 +1,4 @@
-Project Management App - MPM. Frontend: TypeScript, React, Next.js and MaterialUI. Backend: Node.js with Express and Prisma ORM. Database: PostgreSQL. Dashboards, Timeline with Gantt-charts, Users, Teams, dark mode and more.
+Project Management App - MPM. Frontend: TypeScript, React, Next.js and MaterialUI. Backend: Node.js with Express and Prisma ORM. Database: PostgreSQL. Following EdRoh tutorial. Dashboards, Timeline with Gantt-charts, Users, Teams, dark mode and more.
 <ul>
   <li>Task Management: Create, assign, and track tasks with customizable priority levels and due dates</li>
   <li>Progress Tracking: Visual dashboards and progress indicators show project status at a glance</li>
